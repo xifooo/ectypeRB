@@ -1,0 +1,18 @@
+POST http://localhost:8000/loginManagement/register/ http/1.1
+Content-Type: application/json
+
+{
+    "username": "monikai",
+    "email": "monikai@gmail.com",
+    "password": 131313
+}
+
+###
+
+POST http://localhost:8000/loginManagement/login/ http/1.1
+Content-Type: application/json
+
+{
+    "email": "monikai@gmail.com",
+    "password": 131313
+}

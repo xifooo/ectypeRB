@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "myproj"
+version = "0.1.0"
+description = ""
+authors = ["xifooo"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = "^4.2.5"
+pyjwt = "^2.8.0"
+django-cors-headers = "^4.2.0"
+pymysql = "^1.1.0"
+pillow = "^10.0.1"
+pytz = "^2023.3.post1"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.9.1"
+requests = "^2.31.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
