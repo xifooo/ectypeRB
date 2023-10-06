@@ -11,7 +11,7 @@ conn = pymysql.connect(
 )
 with conn:
     with conn.cursor() as cursor:
-        cursor.execute("CREATE DATABASE ectypeRB")
+        cursor.execute("CREATE DATABASE test_ectypeRB")
         conn.commit()
 
 # os.system("python manage.py makemigrations")

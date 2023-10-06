@@ -29,7 +29,7 @@ def register(req):
             "password": hashedPasswd
         }
         User.objects.create(**user_data)
-        return JsonResponse({"info": "创建用户成功!"})
+        return JsonResponse({"info": "创建用户成功!"}, status=201)
     except Exception as e:
         print(e)
         return JsonResponse({"error": "创建用户失败"}, status=500)
