@@ -1,7 +1,39 @@
 GET http://localhost:8000/user/homepage/?user_id=1 http/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6Imp3dCJ9.eyJ1c2VyLWlkIjoxLCJ1c2VybmFtZSI6Im1vbmlrYWkiLCJleHAiOjE2OTcxNjAxMDN9.NDSNlju6ym5u9NH19rfEFlxcQlUPPshl_p3cwaspTSc
 
+### do follow
+
+PATCH http://localhost:8000/user/follow/ http/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6Imp3dCJ9.eyJ1c2VyLWlkIjoxLCJ1c2VybmFtZSI6Im1vbmlrYWkiLCJleHAiOjE2OTcxNjAxMDN9.NDSNlju6ym5u9NH19rfEFlxcQlUPPshl_p3cwaspTSc
+
+{
+    "user_id": 2,
+    "action": "follow",
+    "method": "do"
+}
+
+### undo follow
+
+PATCH http://localhost:8000/user/follow/ http/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6Imp3dCJ9.eyJ1c2VyLWlkIjoxLCJ1c2VybmFtZSI6Im1vbmlrYWkiLCJleHAiOjE2OTcxNjAxMDN9.NDSNlju6ym5u9NH19rfEFlxcQlUPPshl_p3cwaspTSc
+
+{
+    "user_id": 2,
+    "action": "follow",
+    "method": "undo"
+}
+
 ###
 
 GET http://localhost:8000/user/following/?types=follower http/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6Imp3dCJ9.eyJ1c2VyLWlkIjoxLCJ1c2VybmFtZSI6Im1vbmlrYWkiLCJleHAiOjE2OTcxNjAxMDN9.NDSNlju6ym5u9NH19rfEFlxcQlUPPshl_p3cwaspTSc
+
+###
+
+GET http://localhost:8000/user/following/?types=following http/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6Imp3dCJ9.eyJ1c2VyLWlkIjoxLCJ1c2VybmFtZSI6Im1vbmlrYWkiLCJleHAiOjE2OTcxNjAxMDN9.NDSNlju6ym5u9NH19rfEFlxcQlUPPshl_p3cwaspTSc
+
+###
+
