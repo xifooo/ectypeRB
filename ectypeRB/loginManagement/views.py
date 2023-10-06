@@ -39,7 +39,8 @@ def register(req):
 def login(req):
     data = json.loads(req.body)
     # if data.get("email") and (not data.get("username")) and data.get("password"):
-    if not (data.get("email") or data.get("username") or data.get("password")):
+    # if not (data.get("email") or data.get("username") or data.get("password")):
+    if not data.get("password") or not (data.get("username") or data.get("email")):
         return JsonResponse({
             "error": "email, username or password missing, please support correct data again."
         }, status=400)
