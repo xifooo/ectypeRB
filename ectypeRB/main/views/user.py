@@ -123,7 +123,7 @@ def following_or_follower_list(req, *args, **kwargs):
     if not user_list.count():
         return JsonResponse({"data": []}, status=200)
     offset, limit = req.GET.get("offset") or 0, req.GET.get("limit") or 10
-    limited_user_list = limit_querySet(user_list, offset=offset, limit=limit)
+    limited_user_list = limit_querySet(user_list, offset=int(offset), limit=int(limit))
     serialized_user_list = list(following_serialize(limited_user_list))
     return JsonResponse({"data": serialized_user_list}, status=200)
 
@@ -132,7 +132,7 @@ def following_or_follower_list(req, *args, **kwargs):
 def user_post_control(req, *args, **kwargs):
     payload = kwargs.get("payload")
     user_id = payload.get("user-id")
-    data = json.loads(req.data)
+    data = json.loads(req.body)
     post_id = data.get("post_id")
     action, method = data.get("action"), data.get("method")
     if not (post_id and action and method):
