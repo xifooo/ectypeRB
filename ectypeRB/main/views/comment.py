@@ -18,8 +18,8 @@ def comment_create(req, *args, **kwargs):
         return JsonResponse({"error": "params post_id or content missing"}, status=400)
     comment_data = {
         "content": content,
-        "user_id": user_id,
-        "post_id": post_id,
+        "user_id": int(user_id),
+        "post_id": int(post_id),
         "parent_comment_id": data.get("parent_comment_id")
     }
     comment = Comment.objects.create(**comment_data)
@@ -67,7 +67,8 @@ def comment_delete(req, *args, **kwargs):
     comment_id = req.GET.get("comment_id")
     if not comment_id:
         return JsonResponse({"error": "params comment_id missing"}, status=400)
-    comment = Comment.objects.filter(id=comment_id).first()
+    comment = Comment.objects.filter(id=int(comment_id)).first()
+    user_id = int(user_id)
     if user_id != comment.user.id:
         return JsonResponse({"error": "you are not the comment owner"}, status=401)
     # # 若是子评论
